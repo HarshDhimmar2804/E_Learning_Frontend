@@ -21,7 +21,9 @@ const Account = ({ user }) => {
     <div>
       {user && (
         <div className="bg-white p-5 rounded-lg shadow-md w-full max-w-md mx-auto my-16 md:p-2">
-          <h2 className="text-3xl font-semibold text-center">My Profile</h2>
+          <h2 className="text-3xl font-semibold text-center mb-5">
+            My Profile
+          </h2>
           <div className="text-left mt-4">
             <p className="mb-3 text-[#333]">
               <strong className="text-[#8a4baf]">Name - {user.name}</strong>
@@ -55,7 +57,7 @@ const Account = ({ user }) => {
 
             <button
               onClick={logoutHandler}
-              className="bg-red-600 text-white px-4 py-2 border-none rounded-md text-lg cursor-pointer transition duration-300 mt-3 hover:bg-red-500 md:text-base flex items-center justify-center gap-2 w-full"
+              className="bg-red-600 text-white px-4 py-2 border-none rounded-md text-lg cursor-pointer transition duration-300 mt-3 hover:bg-red-500 md:text-base flex items-center justify-center gap-2 w-full mb-12"
             >
               <IoMdLogOut />
               Logout
