@@ -8,6 +8,10 @@ const Header = ({ isAuth }) => {
     setIsOpen(!isOpen);
   };
 
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
   return (
     <header className="bg-white shadow-lg">
       <div className="flex justify-between items-center p-4 relative font-semibold text-[#8a4baf] md:text-lg">
@@ -36,37 +40,42 @@ const Header = ({ isAuth }) => {
         <div
           className={`${
             isOpen ? "block" : "hidden"
-          } md:flex flex-col md:flex-row md:gap-4 md:items-center`}
+          } md:flex flex-col md:flex-row md:gap-4 md:items-center absolute md:relative top-full left-0 w-full bg-white md:w-auto`}
         >
           <Link
             to="/"
-            className="text-[#333] [transition:0.3s] hover:text-[#8a4baf] mt-2 md:mt-0"
+            className="text-[#333] transition duration-300 hover:text-[#8a4baf] mt-2 md:mt-0 px-4 py-2 md:px-0 block"
+            onClick={handleLinkClick}
           >
             Home
           </Link>
           <Link
             to="/courses"
-            className="text-[#333] [transition:0.3s] hover:text-[#8a4baf] mt-2 md:mt-0"
+            className="text-[#333] transition duration-300 hover:text-[#8a4baf] mt-2 md:mt-0 px-4 py-2 md:px-0 block"
+            onClick={handleLinkClick}
           >
             Courses
           </Link>
           <Link
             to="/about"
-            className="text-[#333] [transition:0.3s] hover:text-[#8a4baf] mt-2 md:mt-0"
+            className="text-[#333] transition duration-300 hover:text-[#8a4baf] mt-2 md:mt-0 px-4 py-2 md:px-0 block"
+            onClick={handleLinkClick}
           >
             About
           </Link>
           {isAuth ? (
             <Link
               to="/account"
-              className="text-[#333] [transition:0.3s] hover:text-[#8a4baf] mt-2 md:mt-0"
+              className="text-[#333] transition duration-300 hover:text-[#8a4baf] mt-2 md:mt-0 px-4 py-2 md:px-0 block"
+              onClick={handleLinkClick}
             >
               Account
             </Link>
           ) : (
             <Link
               to="/login"
-              className="text-[#333] [transition:0.3s] hover:text-[#8a4baf] mt-2 md:mt-0"
+              className="text-[#333] transition duration-300 hover:text-[#8a4baf] mt-2 md:mt-0 px-4 py-2 md:px-0 block"
+              onClick={handleLinkClick}
             >
               Login
             </Link>
