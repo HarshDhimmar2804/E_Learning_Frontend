@@ -31,18 +31,26 @@ const ResetPassword = () => {
     }
   };
   return (
-    <div className="auth-page">
-      <div className="auth-form">
-        <h2>Reset Password</h2>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="text">Enter Password</label>
+    <div className="flex items-center justify-center h-[80vh] bg-white">
+      <div className="bg-[#fff] p-8 rounded-xl shadow-lg text-center w-96">
+        <h2 className="text-3xl font-bold text-[#8a4baf] mb-4">
+          Reset Password
+        </h2>
+        <form className="text-left" onSubmit={handleSubmit}>
+          <label htmlFor="text" className="block mb-1 text-sm text-[#333]">
+            Enter Password
+          </label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            className="w-[92%] p-2 mb-4 border-[1px] border-solid border-[#ccc] rounded-md"
           />
-          <button disabled={btnLoading} className="common-btn">
+          <button
+            disabled={btnLoading}
+            className="bg-[#8a4baf] text-white px-5 py-3 border-none rounded-md text-lg cursor-pointer [transition:background-color_.3s_ease] mt-3 hover:bg-[#5f357e] md:text-base"
+          >
             {btnLoading ? "Please Wait..." : "Reset Password"}
           </button>
         </form>

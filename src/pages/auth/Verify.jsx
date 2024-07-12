@@ -39,7 +39,6 @@ const Verify = () => {
             sitekey=" 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
             onChange={onChange}
           />
-          ,
           {show && (
             <button
               disabled={btnLoading}
@@ -50,8 +49,12 @@ const Verify = () => {
             </button>
           )}
         </form>
-        <p>
-          Go to <Link to="/login">Login</Link> page
+        <p className="">
+          Go to{" "}
+          <Link to="/login" className="underline">
+            Login
+          </Link>{" "}
+          page
         </p>
       </div>
     </div>
