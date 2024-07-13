@@ -476,9 +476,6 @@ const Lecture = ({ user }) => {
       console.log(error);
     }
   };
-
-  console.log(progress);
-
   useEffect(() => {
     fetchLectures();
     fetchProgress();
@@ -512,7 +509,9 @@ const Lecture = ({ user }) => {
                         autoPlay
                         onEnded={() => addProgress(lecture._id)}
                       ></video>
-                      <h1 className="text-5xl mt-5 mb-2 font-bold">{lecture.title}</h1>
+                      <h1 className="text-5xl mt-5 mb-2 font-bold">
+                        {lecture.title}
+                      </h1>
                       <h3 className="text-2xl font-medium">
                         {lecture.description}
                       </h3>
@@ -596,13 +595,11 @@ const Lecture = ({ user }) => {
                         progress[0].completedLectures.includes(e._id) && (
                           <span
                             style={{
-                              background: "red",
-                              padding: "2px",
-                              borderRadius: "6px",
+                              borderRadius: "10px",
                               color: "greenyellow",
                             }}
                           >
-                            <TiTick />
+                            <TiTick className="" />
                           </span>
                         )}
                     </div>
