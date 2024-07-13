@@ -21,67 +21,142 @@ const CourseDescription = ({ user }) => {
     fetchCourse(params.id);
   }, []);
 
+  // const checkoutHandler = async () => {
+  //   const token = localStorage.getItem("token");
+  //   setLoading(true);
+
+  //   const {
+  //     data: { order },
+  //   } = await axios.post(
+  //     `${server}/api/course/checkout/${params.id}`,
+  //     {},
+  //     {
+  //       headers: {
+  //         token,
+  //       },
+  //     }
+  //   );
+
+  //   const options = {
+  //     key: "rzp_test_iW3QbqIageT7dd", // Enter the Key ID generated from the Dashboard
+  //     amount: order.id, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+  //     currency: "INR",
+  //     name: "E learning", //your business name
+  //     description: "Learn with us",
+  //     order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+
+  //     handler: async function (response) {
+  //       const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+  //         response;
+
+  //       try {
+  //         const { data } = await axios.post(
+  //           `${server}/api/verification/${params.id}`,
+  //           {
+  //             razorpay_order_id,
+  //             razorpay_payment_id,
+  //             razorpay_signature,
+  //           },
+  //           {
+  //             headers: {
+  //               token,
+  //             },
+  //           }
+  //         );
+
+  //         await fetchUser();
+  //         await fetchCourses();
+  //         await fetchMyCourse();
+  //         toast.success(data.message);
+  //         setLoading(false);
+  //         navigate(`/payment-success/${razorpay_payment_id}`);
+  //       } catch (error) {
+  //         toast.error(error.response.data.message);
+  //         setLoading(false);
+  //       }
+  //     },
+  //     theme: {
+  //       color: "#8a4baf",
+  //     },
+  //   };
+  //   const razorpay = new window.Razorpay(options);
+
+  //   razorpay.open();
+  // };
+
   const checkoutHandler = async () => {
     const token = localStorage.getItem("token");
     setLoading(true);
 
-    const {
-      data: { order },
-    } = await axios.post(
-      `${server}/api/course/checkout/${params.id}`,
-      {},
-      {
-        headers: {
-          token,
-        },
-      }
-    );
-
-    const options = {
-      key: "rzp_test_iW3QbqIageT7dd", // Enter the Key ID generated from the Dashboard
-      amount: order.id, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-      currency: "INR",
-      name: "E learning", //your business name
-      description: "Learn with us",
-      order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-
-      handler: async function (response) {
-        const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
-          response;
-
-        try {
-          const { data } = await axios.post(
-            `${server}/api/verification/${params.id}`,
-            {
-              razorpay_order_id,
-              razorpay_payment_id,
-              razorpay_signature,
-            },
-            {
-              headers: {
-                token,
-              },
-            }
-          );
-
-          await fetchUser();
-          await fetchCourses();
-          await fetchMyCourse();
-          toast.success(data.message);
-          setLoading(false);
-          navigate(`/payment-success/${razorpay_payment_id}`);
-        } catch (error) {
-          toast.error(error.response.data.message);
-          setLoading(false);
+    try {
+      const response = await axios.post(
+        `${server}/api/course/checkout/${params.id}`,
+        {},
+        {
+          headers: {
+            token,
+          },
         }
-      },
-      theme: {
-        color: "#8a4baf",
-      },
-    };
-    const razorpay = new window.Razorpay(options);
+      );
 
-    razorpay.open();
+      const order = response.data.order;
+
+      if (!order || !order.id) {
+        throw new Error("Order ID is not defined");
+      }
+
+      const options = {
+        key: "rzp_test_iW3QbqIageT7dd", // Enter the Key ID generated from the Dashboard
+        amount: order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        currency: "INR",
+        name: "E learning", // your business name
+        description: "Learn with us",
+        order_id: order.id, // This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+
+        handler: async function (response) {
+          const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+            response;
+
+          try {
+            const verificationResponse = await axios.post(
+              `${server}/api/verification/${params.id}`,
+              {
+                razorpay_order_id,
+                razorpay_payment_id,
+                razorpay_signature,
+              },
+              {
+                headers: {
+                  token,
+                },
+              }
+            );
+
+            const data = verificationResponse.data;
+
+            await fetchUser();
+            await fetchCourses();
+            await fetchMyCourse();
+            toast.success(data.message);
+            navigate(`/payment-success/${razorpay_payment_id}`);
+          } catch (error) {
+            toast.error(error.response?.data?.message || "Verification failed");
+          } finally {
+            setLoading(false);
+          }
+        },
+        theme: {
+          color: "#8a4baf",
+        },
+      };
+
+      const razorpay = new window.Razorpay(options);
+      razorpay.open();
+    } catch (error) {
+      console.error("Checkout Error:", error);
+      toast.error(error.response?.data?.message || "Checkout failed");
+      setLoading(false);
+    }
   };
 
   return (
