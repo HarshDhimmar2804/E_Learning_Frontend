@@ -39,13 +39,16 @@ const Testimonials = () => {
         "https://th.bing.com/th/id/OIP.GKAiW3oc2TWXVEeZAzrWOAHaJF?w=135&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
     },
   ];
+
   return (
-    <section className="px-20 text-center">
-      <h2 className="text-3xl text-[#8a4baf] mb-7 mt-3">What our students say</h2>
-      <div className="flex flex-wrap justify-center gap-7">
+    <section className="px-5 md:px-20 text-center">
+      <h2 className="text-2xl md:text-3xl text-[#8a4baf] mb-5 mt-3">
+        What our students say
+      </h2>
+      <div className="flex flex-wrap justify-center gap-5 md:gap-7">
         {testimonialsData.map((e) => (
           <div
-            className="bg-white shadow-md p-5 rounded-xl w-80 text-left flex flex-col items-center md:w-72"
+            className="bg-white shadow-md p-5 rounded-xl w-full sm:w-72 text-left flex flex-col items-center"
             key={e.id}
           >
             <div className="mb-3">
