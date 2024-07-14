@@ -20,7 +20,7 @@ const Account = ({ user }) => {
   return (
     <div>
       {user && (
-        <div className="bg-white p-5 rounded-lg shadow-md w-full max-w-md mx-auto my-16 md:p-2">
+        <div className="bg-white p-5 rounded-lg shadow-md w-full max-w-md mx-auto my-16 md:p-2 md:pb-[72px]">
           <h2 className="text-3xl font-semibold text-center mb-5">
             My Profile
           </h2>
