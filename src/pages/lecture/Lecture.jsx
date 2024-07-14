@@ -183,7 +183,7 @@ const Lecture = ({ user }) => {
               Lecture completed - {completedLec} out of {lectLength}
             </p>
             <progress
-              className="w-full h-4 mt-2 rounded-md"
+              className="w-full h-4 mt-2 rounded-md md:h-6"
               value={completed}
               max={100}
             ></progress>
@@ -199,7 +199,7 @@ const Lecture = ({ user }) => {
                     <>
                       <video
                         src={`${server}/${lecture.video}`}
-                        width={"100%"}
+                        className="w-full"
                         controls
                         controlsList="nodownload noremoteplayback"
                         disablePictureInPicture
@@ -207,10 +207,10 @@ const Lecture = ({ user }) => {
                         autoPlay
                         onEnded={() => addProgress(lecture._id)}
                       ></video>
-                      <h1 className="text-5xl mt-5 mb-2 font-bold">
+                      <h1 className="text-2xl md:text-5xl mt-5 mb-2 font-bold">
                         {lecture.title}
                       </h1>
-                      <h3 className="text-2xl font-medium">
+                      <h3 className="text-lg md:text-2xl font-medium">
                         {lecture.description}
                       </h3>
                     </>
@@ -225,7 +225,7 @@ const Lecture = ({ user }) => {
             <div className="right">
               {user && user.role === "admin" && (
                 <button
-                  className="bg-[#8a4baf] text-white px-5 py-3 border-none rounded-md text-lg cursor-pointer [transition:background-color_.3s_ease] mt-3 hover:bg-[#5f357e] md:text-base"
+                  className="bg-[#8a4baf] text-white px-4 py-2 border-none rounded-md text-sm md:text-lg cursor-pointer transition-colors mt-3 hover:bg-[#5f357e]"
                   onClick={() => setShow(!show)}
                 >
                   {show ? "Close" : "Add Lecture +"}
@@ -271,7 +271,7 @@ const Lecture = ({ user }) => {
                     <button
                       disabled={btnLoading}
                       type="submit"
-                      className="bg-[#8a4baf] text-white px-5 py-3 border-none rounded-md text-lg cursor-pointer [transition:background-color_.3s_ease] mt-3 hover:bg-[#5f357e] md:text-base"
+                      className="bg-[#8a4baf] text-white px-4 py-2 border-none rounded-md text-sm md:text-lg cursor-pointer transition-colors mt-3 hover:bg-[#5f357e]"
                     >
                       {btnLoading ? "Please Wait..." : "Add"}
                     </button>
@@ -303,7 +303,7 @@ const Lecture = ({ user }) => {
                     </div>
                     {user && user.role === "admin" && (
                       <button
-                        className="bg-red-600 text-white px-5 py-3 border-none rounded-md text-lg cursor-pointer [transition:background-color_.3s_ease] mt-3 hover:bg-red-500 md:text-base"
+                        className="bg-red-600 text-white px-4 py-2 border-none rounded-md text-sm md:text-lg cursor-pointer transition-colors mt-3 hover:bg-red-500"
                         onClick={() => deleteHandler(e._id)}
                       >
                         Delete {e.title}
