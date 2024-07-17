@@ -6,7 +6,7 @@ const Courses = () => {
   const { courses } = CourseData();
 
   return (
-    <div className="py-20 px-0 text-center min-h-[60vh]">
+    <div className="py-20 px-0 text-center min-h-[60vh] mt-20">
       <h2 className="text-3xl font-semibold text-[#8a4baf] mb-5">
         Available Courses
       </h2>
