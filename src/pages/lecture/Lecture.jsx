@@ -146,7 +146,7 @@ const Lecture = ({ user }) => {
       setLectLength(data.allLectures);
       setProgress(data.progress);
     } catch (error) {
-      toast.error(error.response.data.message);
+      // toast.error(error.response.data.message);
     }
   }
 
@@ -167,6 +167,7 @@ const Lecture = ({ user }) => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     fetchLectures();
     fetchProgress();
