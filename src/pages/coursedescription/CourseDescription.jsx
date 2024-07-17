@@ -92,7 +92,7 @@ const CourseDescription = ({ user }) => {
       ) : (
         <>
           {course && (
-            <div className="course-description py-20 px-0 text-center min-h-[55vh]">
+            <div className="course-description py-20 px-0 text-center min-h-[55vh] mb-20">
               <div className="course-header flex items-center justify-center flex-wrap gap-5 mb-10">
                 <img
                   src={`${server}/${course.image}`}
