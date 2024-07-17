@@ -5,7 +5,7 @@ import "./index.css";
 import { UserContextProvider } from "./context/UserContext.jsx";
 import { CourseContextProvider } from "./context/CourseContext.jsx";
 
-export const server = "https://e-learning-backend-zeta.vercel.app";
+export const server = "https://e-learning-backend-pssu.onrender.com";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
