@@ -47,6 +47,54 @@ Check out the live demo of the project [here](https://mern-e-learning.vercel.app
    ```bash
    git clone https://github.com/HarshDhimmar2804/E_Learning_Backend.git
 
-1. Navigate to the project directory:
+2. Navigate to the project directory:
    ```bash
    cd E_Learning_Backend
+
+3. Install dependencies:
+   ```bash
+   npm install
+
+4. Create a .env file and add your environment variables:
+   ```bash
+   PORT=5000
+   MONGO_URI=your_mongo_uri
+   JWT_SECRET=your_jwt_secret
+   EMAIL_SERVICE=your_email_service
+   EMAIL_USER=your_email_user
+   EMAIL_PASS=your_email_pass
+   RAZORPAY_KEY_ID=your_razorpay_key_id
+   RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+
+5. Start the backend server:
+   ```bash
+   npm start
+
+### Frontend Setup   
+
+1. Clone the frontend repository:
+   ```bash
+   git clone https://github.com/HarshDhimmar2804/E_Learning_Frontend.git
+
+2. Navigate to the project directory:
+   ```bash
+   cd E_Learning_Frontend
+
+3. Install dependencies:
+   ```bash
+   npm install
+
+4. Start the frontend development server:
+   ```bash
+   npm start
+
+## 🤝 Contribution
+
+Contributions are welcome! Feel free to fork the repositories and submit pull requests.
+
+## 📬 Contact
+
+For any questions or inquiries, please contact me via [LinkedIn](www.linkedin.com/in/harshdhimmar) or open an issue in the repositories.
+For any questions or inquiries, please contact me:
+- **LinkedIn**: [LinkedIn](www.linkedin.com/in/harshdhimmar)
+- **Email**: [Email](work.harshdhimmar@gmail.com)
