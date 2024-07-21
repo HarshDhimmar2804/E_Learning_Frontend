@@ -46,3 +46,7 @@ Check out the live demo of the project [here](https://mern-e-learning.vercel.app
 1. Clone the backend repository:
    ```bash
    git clone https://github.com/HarshDhimmar2804/E_Learning_Backend.git
+
+1. Navigate to the project directory:
+   ```bash
+   cd E_Learning_Backend
